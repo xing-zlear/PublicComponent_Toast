@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Toast from './index.vue'
+import '../assets/iconmoon/iconfont.css'
 
 // 创建组件构造器，定义一个vue的子类
 const ToastConstructor = Vue.extend(Toast)
@@ -74,22 +75,22 @@ function generateInstance(options) {
 }
 
 // install方法其实就是给Vue.use方法识别的
-export default {
-  install: function(Vue, options) {
-    Vue.prototype.$toast = (options = {}) => {
-      // 判断是否缺少必需参数
-      requiredProps.forEach(item => {
-        if(!options[item]) {
-          throw `err: options lack ${item} prop`;
-        }
-      })
-      // 判断type是否存在
-      if(options.type && !types.some(item => item === options.type)) {
-        throw `err: toast not exist ${options.type} type`
+let ToastPlugin = {}
+ToastPlugin.install = function(Vue, options) {
+  Vue.prototype.$toast = (options) => {
+    // 判断是否缺少必需参数
+    requiredProps.forEach(item => {
+      if(!options[item]) {
+        throw `err: options lack ${item} prop`;
       }
-      // 生成toast实例们
-      let instance = generateInstance(options)
-      instances.push(instance)
+    })
+    // 判断type是否存在
+    if(options.type && !types.some(item => item === options.type)) {
+      throw `err: toast not exist ${options.type} type`
     }
+    // 生成toast实例们
+    let instance = generateInstance(options)
+    instances.push(instance)
   }
 }
+export default ToastPlugin
