@@ -5,7 +5,7 @@
 ## 可配置参数
 
 |  参数名称  | 类型  | 含义  | 默认值  |是否必填 |
-|  ----  | ----  | ----  |
+|  ----  | ----  | ----  | ----  | ----  |
 | content  | String | 消息提示的内容 | 空 | 必填 |
 | type  | String | 提示状态类型，info、success、warning、error 四个选项 ｜ 默认info | 选填 |
 | duration  | Number | 显示时间-毫秒 ｜ 默认1500 | 选填 |
@@ -26,7 +26,7 @@ npm run dev
 npm run build
 ```
 
-## Build Setup
+## Use
 
 ``` bash
 # install
